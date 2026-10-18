@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Poland deep dive: 5–10 MW gas engines | Power Balancing Services International</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Manrope:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#EDF1F3;--sf:#fff;--ink:#11232B;--mute:#52646D;--line:#D3DCE0;--ac:#0E7C7B;--fl:#D9822B;--bad:#B3402F;--c1:#0E7C7B;--c2:#D9822B;--c3:#7A5C99;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0D1A20;--sf:#14262E;--ink:#E6EEF1;--mute:#9DB0B8;--line:#254049;--ac:#3FB5B2;--fl:#F0A04B;--bad:#E8806E;--c1:#3FB5B2;--c2:#F0A04B;--c3:#A98BC7}}
+:root[data-theme="dark"]{--bg:#0D1A20;--sf:#14262E;--ink:#E6EEF1;--mute:#9DB0B8;--line:#254049;--ac:#3FB5B2;--fl:#F0A04B;--bad:#E8806E;--c1:#3FB5B2;--c2:#F0A04B;--c3:#A98BC7}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Manrope,system-ui,-apple-system,"Segoe UI",sans-serif}
+.w{max-width:1080px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:"Bricolage Grotesque",Manrope,system-ui,sans-serif;line-height:1.15;margin:0}
+header{background:var(--ink);color:var(--bg);padding:52px 0 44px}
+header .b{font-weight:700;font-size:15px;opacity:.8;margin:0 0 24px}
+header h1{font-size:clamp(30px,5.5vw,52px);max-width:19ch;letter-spacing:-.02em}
+header p{max-width:66ch;margin:18px 0 0;font-size:18px;opacity:.85}
+section{padding:40px 0 4px}
+h2{font-size:clamp(23px,3.4vw,30px);margin-bottom:8px}
+h3{font-size:18px;margin-bottom:6px}
+.lede{color:var(--mute);max-width:70ch;margin:0 0 20px}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.k{background:var(--sf);border:1px solid var(--line);border-left:4px solid var(--ac);border-radius:6px;padding:16px 18px}
+.k b{font-family:"Bricolage Grotesque",Manrope,sans-serif;font-size:26px;display:block;line-height:1.1}
+.k span{font-size:14px;color:var(--mute)}
+.k.f{border-left-color:var(--fl)}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--sf)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+th,td{padding:10px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{font-size:13px;color:var(--mute)}tr:last-child td{border-bottom:0}
+td:first-child{font-weight:700;white-space:nowrap}
+.m{display:grid;grid-template-columns:minmax(260px,340px) 1fr;gap:18px;align-items:start}
+@media(max-width:820px){.m{grid-template-columns:1fr}}
+.p{background:var(--sf);border:1px solid var(--line);border-radius:6px;padding:18px}
+.in{display:grid;grid-template-columns:1fr 92px;gap:4px 10px;align-items:center;font-size:13.5px;margin:6px 0}
+.in label{color:var(--mute)}
+.in input{width:100%;font:inherit;font-weight:700;padding:5px 7px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink);text-align:right}
+.in input:focus-visible,.sc button:focus-visible{outline:3px solid var(--ac);outline-offset:1px}
+.gh{font-weight:700;font-size:14px;margin:16px 0 4px;padding-top:12px;border-top:1px solid var(--line)}.gh:first-child{border:0;margin-top:0;padding-top:0}
+.sc{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.sc button{font:inherit;font-weight:700;font-size:14px;padding:8px 14px;border-radius:99px;border:1px solid var(--ac);background:var(--sf);color:var(--ac);cursor:pointer}
+.sc button.on{background:var(--ac);color:var(--sf)}
+.o{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:16px}
+.o div{border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+.o b{display:block;font:700 22px "Bricolage Grotesque",Manrope,sans-serif}
+.o span{font-size:12.5px;color:var(--mute)}
+.bar{display:flex;height:26px;border-radius:3px;overflow:hidden;background:var(--bg);margin:8px 0}
+.lg{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:13px;color:var(--mute)}
+.lg i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px}
+.note{font-size:14px;margin:12px 0 0;padding:10px 12px;border-radius:6px;background:var(--bg)}
+.sn td,.sn th{text-align:center;padding:8px 10px}.sn td:first-child,.sn th:first-child{text-align:left}
+ul{margin:6px 0 0;padding-left:18px;font-size:14.5px}
+.src{font-size:13px;color:var(--mute)}.src a{color:var(--ac)}
+footer{margin-top:44px;padding:26px 0 40px;border-top:1px solid var(--line);color:var(--mute);font-size:13px}
+</style>
+</head>
+<body>
+<header><div class="w">
+<p class="b">Power Balancing Services International</p>
+<h1>Poland deep dive: 5–10 MW gas engines</h1>
+<p>Capacity market, carbon, gas supply, grid connection, trading, tax and currency, with an interactive project model. Market data as at 14 October 2026.</p>
+</div></header>
+
+<main class="w">
+<section>
+<h2>What an investor needs to know</h2>
+<p class="lede">The capacity market is the bankable revenue. At today's gas prices the energy margin is thin, so returns depend on capacity price, capex discipline and any heat revenue.</p>
+<div class="g">
+<div class="k"><b>PLN 465/kW/yr</b><span>Clearing price, 2030 delivery main auction (Dec 2025); about 2.4 GW went to gas</span></div>
+<div class="k"><b>€82/t</b><span>EU carbon price, early October 2026</span></div>
+<div class="k f"><b>€80–87/MWh</b><span>TTF gas in October, after the Hormuz closure; Polish 2027 forward is about PLN 214/MWh (≈€50)</span></div>
+<div class="k"><b>GBP/PLN 5.02</b><span>September 2026; EUR/PLN has held near 4.23–4.25</span></div>
+</div>
+</section>
+
+<section>
+<h2>Market facts and model inputs</h2>
+<p class="lede">Each finding feeds a default in the model below.</p>
+<div class="tw"><table>
+<thead><tr><th>Topic</th><th>Finding</th><th>Model treatment</th></tr></thead>
+<tbody>
+<tr><td>Capacity market</td><td>Recent clearing prices: PLN 534.09 (July 2025 catch-up auction for 2029, 17-year contracts, about 2.7 GW incl. seven new gas units), PLN 465.02 (Dec 2025, 2030), and PLN 325.55 (T-1 auction for 2027, Sept 2026). Prices are indexed to CPI from year two. Units need at least 2 MW gross, so 5–10 MW sites qualify. Recent rules used a minimum new-build spend of about PLN 2,400/kW for 15-year contracts; confirm for the next auction.</td><td>Base price PLN 400/kW/yr, 15-year term, 90% de-rating (assumed, confirm in the auction regulation), CPI indexed</td></tr>
+<tr><td>Capacity market risk</td><td>EU state aid approval and the coal derogation run to end-2028, and a new scheme is expected. The regulator has tuned parameters to favour gas, cutting battery availability to 13.39%, which draws state-aid criticism and could change.</td><td>Downside scenario; post-contract capacity price PLN 250/kW/yr</td></tr>
+<tr><td>Carbon</td><td>EUAs traded around €82/t in early October 2026. Analysts forecast €100 or more by 2027, while Italy and Czechia are pushing to suspend the market reserve intake. Plants above 20 MW thermal input join the EU ETS; a 10 MWe engine site (about 24 MWth) does, a 5 MWe site (about 12 MWth) generally does not.</td><td>Carbon cost applies automatically above 20 MWth; EUA price grows 4% a year</td></tr>
+<tr><td>Gas supply</td><td>Baltic Pipe (up to 10 bcm/yr), Świnoujście LNG (8.3 bcm after expansion) and a planned Gdańsk FSRU (6.1 bcm) give diversified supply. Orlen dominates imports. The EU Russian gas import ban phases in from 2026. Hormuz disruption has pushed TTF up about 150% year on year, with EU storage near 73%. A 10 MWe engine burns roughly 2,300 m³/h at 43% efficiency.</td><td>Gas PLN 235/MWh delivered (2027 forward plus network and supply costs), growing 2% a year</td></tr>
+<tr><td>Power prices</td><td>TGE day-ahead averaged PLN 584/MWh in August 2026 and the 2027 baseload forward PLN 496/MWh. Evening peaks run well above base and midday solar pushes prices below zero. At current gas and carbon, clean spark spreads in baseload hours are negative, so engines earn only in scarcity hours.</td><td>Engine runs 1,200 h/yr at an average PLN 900/MWh; margin cannot go below zero</td></tr>
+<tr><td>Trading and balancing</td><td>Trade via TGE (day-ahead, intraday, forwards) or OTC, through a balancing responsible party. PSE runs central dispatch; the reformed balancing market started in June 2024, Poland joined PICASSO (aFRR) in July 2025 and is preparing for MARI (mFRR). PSE buys about 400–500 MW of aFRR and 197 MW of FCR. Sites of 5–10 MW on distribution grids will probably need aggregation to reach balancing products.</td><td>Other flexibility revenue PLN 60/kW/yr (assumption)</td></tr>
+<tr><td>Grid connection</td><td>The Energy Law amendment in force from 30 April 2026 adds a non-refundable application fee of PLN 1/kW (cap PLN 100,000), raises the advance payment to PLN 60/kW, requires collateral above 1 kV, cuts validity of connection conditions to 12 months, adds milestones with automatic expiry, and introduces flexible connection agreements. Indicative timeline (our estimate, confirm with the DSO): 6–12 months for conditions, 8–16 months for equipment and build, 24–36 months to commercial operation.</td><td>Operations start three years out; capex includes grid and gas connection</td></tr>
+<tr><td>Ownership</td><td>Poland's screening regime applies to acquisitions of at least 20% in protected entities by investors from outside the EU, EEA and OECD. The UK is in the OECD, so a UK parent is generally outside it, although protected sectors and indirect holdings should be checked. This corrects my earlier screen, which implied UK buyers could face screening.</td><td>100% ownership, no partner needed</td></tr>
+<tr><td>Tax</td><td>Corporate tax 19%. Dividend withholding tax is 19% domestically and reduced under the UK treaty (confirm the rate). Interest deductions are capped at PLN 3m or 30% of tax EBITDA. Losses carry forward five years.</td><td>19% tax, 15-year straight-line depreciation</td></tr>
+<tr><td>Currency</td><td>GBP/PLN moved between about 4.89 (May–June) and 5.02–5.07 (July–September 2026). Engines are priced in EUR, revenues in PLN, and capacity payments follow Polish CPI.</td><td>EUR/PLN 4.25, GBP/PLN 5.02, PLN weakens 1% a year against GBP</td></tr>
+</tbody></table></div>
+</section>
+
+<section>
+<h2>Project model</h2>
+<p class="lede">A single 20-year project in nominal PLN. Edit any input or pick a scenario; results update instantly.</p>
+<div class="sc" id="sc"></div>
+<div class="m">
+<div class="p" id="inp"></div>
+<div>
+<div class="p">
+<div class="o" id="out"></div>
+<h3>Year-one revenue split</h3>
+<div class="bar" id="bar"></div><div class="lg" id="lg"></div>
+<div class="note" id="note"></div>
+</div>
+<div class="p" style="margin-top:14px">
+<h3>Project IRR sensitivity (post-tax, unlevered)</h3>
+<p class="src" style="margin:0 0 8px">Capacity price against gas price, other inputs as set.</p>
+<div class="tw"><table class="sn" id="sn"></table></div>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>Key risks</h2>
+<div class="tw"><table>
+<thead><tr><th>Risk</th><th>Why it matters</th><th>Mitigant</th></tr></thead>
+<tbody>
+<tr><td>Gas price and supply</td><td>Hormuz disruption sets the short-run cost; high gas removes energy margin.</td><td>Capacity-led case; fixed-price gas for peak months; pass-through in heat contracts</td></tr>
+<tr><td>Capacity market design</td><td>De-rating factors and post-2028 state aid can change.</td><td>Win a multi-year contract early; test returns at PLN 325/kW</td></tr>
+<tr><td>Grid connection</td><td>Higher fees and tight milestones; no-connection zones possible.</td><td>Secure conditions only with land, permit and equipment slot ready; use flexible agreements</td></tr>
+<tr><td>Battery competition</td><td>Storage still wins capacity despite lower de-rating.</td><td>Position for long-duration availability; keep heat revenue option</td></tr>
+<tr><td>Currency</td><td>EUR capex against PLN revenue, GBP equity.</td><td>Hedge engine contracts; borrow in PLN; stress the 1% drift input</td></tr>
+<tr><td>Carbon policy</td><td>ETS reform could move prices either way.</td><td>Size below 20 MWth where possible; stress EUA at €100</td></tr>
+</tbody></table></div>
+</section>
+
+<section>
+<h2>Sources and caveats</h2>
+<p class="src">Capacity auctions: PSE and company filings, Modo Energy, ESS News, Beyond Fossil Fuels (reglobal.org), Forum Energii. Carbon and gas: S&amp;P Global, GMK Center, EIA, oilprice.com, Orlen. Power and gas prices: TGE monthly summaries (tge.pl). Grid reform: Baker McKenzie, Schoenherr, Wolf Theiss, CMS. Screening and tax: Dudkowiak, PwC Tax Summaries. Exchange rates: NBP via comparic.pl, 30rates.com. Capex benchmark: Thunder Said Energy (about $1,500/kW for a 5 MW engine plant) and Jenbacher (8–16 months to commercial operation).</p>
+</section>
+</main>
+
+<footer><div class="w">Indicative model, not investment, legal or tax advice. Defaults for capex, de-rating, run hours, achieved price, other revenue and operating costs are assumptions; replace them with PBSI's own site data. Verify auction rules, connection requirements, treaty rates and prices before committing capital.</div></footer>
+
+<script>
+const G=[["Plant",[["mw","Capacity (MW)",10],["cx","Capex (€/kW, all-in)",1000],["eta","Net efficiency (%)",43]]],
+["Capacity market",[["cm","Capacity price (PLN/kW/yr)",400],["der","De-rating factor (%)",90],["term","Contract term (years)",15],["cm2","Price after contract (PLN/kW/yr)",250]]],
+["Energy",[["hrs","Run hours per year",1200],["px","Avg price when running (PLN/MWh)",900],["gas","Gas delivered (PLN/MWh)",235],["eua","EU carbon price (€/t)",82],["oth","Other revenue (PLN/kW/yr)",60]]],
+["Costs and macro",[["fo","Fixed O&amp;M (PLN/kW/yr)",200],["vo","Variable O&amp;M (PLN/MWh)",30],["cpi","CPI (%)",3],["ge","Energy price growth (%)",2]]],
+["Finance and FX",[["gear","Gearing (%)",60],["dr","Debt cost (%)",7],["dt","Debt tenor (years)",12],["eur","EUR/PLN",4.25],["gbp","GBP/PLN",5.02],["dft","PLN weakening vs GBP (%/yr)",1]]]];
+const P0={};G.forEach(g=>g[1].forEach(f=>P0[f[0]]=f[2]));
+const S={"Base":{},"Contracted upside":{cm:534,term:17,gas:200,oth:150,cx:1050},"CHP with heat":{oth:260,cx:1100,hrs:2500},"Downside":{cm:325,gas:300,oth:40,dft:2}};
+let P={...P0},cur="Base";
+function irr(c){let lo=-.9,hi=1,f=r=>c.reduce((a,v,i)=>a+v/Math.pow(1+r,i),0);if(f(lo)*f(hi)>0)return null;for(let i=0;i<80;i++){let m=(lo+hi)/2;f(lo)*f(m)<=0?hi=m:lo=m}return(lo+hi)/2}
+function run(p){const N=20,K=p.mw*1000,fx=p.eur,cx=p.cx*fx*K,off=3,eta=p.eta/100,ets=p.mw/eta>=20,D=cx*p.gear/100,r=p.dr/100,n=p.dt;
+const pay=D*r/(1-Math.pow(1+r,-n));let bal=D,pr=[-cx],eq=[-(cx-D)],eg=[-(cx-D)/p.gbp],ds=[],y1,cum=-cx,pb=null,s1;
+for(let t=1;t<=N;t++){const ie=Math.pow(1+p.ge/100,t+off-1),ic=Math.pow(1+p.cpi/100,t-1),ib=Math.pow(1+p.cpi/100,t+off-1);
+const cp=t<=p.term?p.cm*ic:p.cm2*ib,cap=K*p.der/100*cp,co2=ets?.202/eta*p.eua*Math.pow(1.04,t+off-1)*fx:0,srmc=p.gas*ie/eta+co2+p.vo*ib,
+en=Math.max(0,p.px*ie-srmc)*p.hrs*p.mw*.95,oth=p.oth*K*ib,fo=p.fo*K*ib,e=cap+en+oth-fo,dep=t<=15?cx/15:0,
+int=t<=n?bal*r:0,svc=t<=n?pay:0;if(t<=n)bal-=pay-int;
+const tu=.19*Math.max(0,e-dep),tl=.19*Math.max(0,e-dep-int);pr.push(e-tu);const ecf=e-tl-svc;eq.push(ecf);eg.push(ecf/(p.gbp*Math.pow(1+p.dft/100,t)));
+if(svc)ds.push((e-tl)/svc);cum+=e-tu;if(pb===null&&cum>=0)pb=t;if(t==1){y1={cap,en,oth,fo};s1=srmc}}
+return{pi:irr(pr),ei:irr(eq),eg:irr(eg),dmin:ds.length?Math.min(...ds):null,pb,y1,cx,eq:cx-D,srmc:s1,ets,px:p.px*Math.pow(1+p.ge/100,off)}}
+const pc=v=>v==null?"n/a":(v*100).toFixed(1)+"%",m=v=>(v/1e6).toFixed(1);
+function draw(){const R=run(P),y=R.y1,tot=y.cap+y.en+y.oth;
+document.getElementById("out").innerHTML=[["Project IRR (post-tax)",pc(R.pi)],["Equity IRR (PLN)",pc(R.ei)],["Equity IRR (GBP)",pc(R.eg)],["Minimum DSCR",R.dmin==null?"n/a":R.dmin.toFixed(2)+"x"],["Payback (years)",R.pb||">20"],["Capex (PLN m)",m(R.cx)],["Equity cheque (£m)",(R.eq/P.gbp/1e6).toFixed(1)]].map(([l,v])=>`<div><b>${v}</b><span>${l}</span></div>`).join("");
+const seg=[["Capacity payments",y.cap,"var(--c1)"],["Energy margin",y.en,"var(--c2)"],["Other and heat",y.oth,"var(--c3)"]];
+document.getElementById("bar").innerHTML=seg.map(s=>`<span title="${s[0]}" style="background:${s[2]};flex:${Math.max(s[1],1)}"></span>`).join("");
+document.getElementById("lg").innerHTML=seg.map(s=>`<span><i style="background:${s[2]}"></i>${s[0]}: PLN ${m(s[1])}m (${tot?(s[1]/tot*100).toFixed(0):0}%)</span>`).join("")+`<span>Fixed O&amp;M: PLN ${m(y.fo)}m</span>`;
+document.getElementById("note").innerHTML=`Short-run cost in year one is <b>PLN ${R.srmc.toFixed(0)}/MWh</b> (${R.ets?"including":"excluding"} carbon) against an achieved price of <b>PLN ${R.px.toFixed(0)}/MWh</b>. ${R.px<R.srmc?"The engine would not run, so energy margin is zero.":"The engine runs in those hours."} Capacity payments are ${(y.cap/tot*100).toFixed(0)}% of revenue.`;
+const cms=[325,400,465,534],gs=[180,235,290,350];
+document.getElementById("sn").innerHTML=`<tr><th>Capacity PLN/kW/yr</th>${gs.map(g=>`<th>Gas ${g}</th>`).join("")}</tr>`+cms.map(c=>`<tr><td>${c}</td>${gs.map(g=>{const v=run({...P,cm:c,gas:g}).pi;return`<td style="${v!=null&&v>=.1?"font-weight:700;color:var(--ac)":v==null||v<.06?"color:var(--bad)":""}">${pc(v)}</td>`}).join("")}</tr>`).join("");}
+function build(){document.getElementById("inp").innerHTML=G.map(g=>`<div class="gh">${g[0]}</div>`+g[1].map(f=>`<div class="in"><label for="${f[0]}">${f[1]}</label><input id="${f[0]}" type="number" step="any" value="${P[f[0]]}"></div>`).join("")).join("");
+document.querySelectorAll("#inp input").forEach(i=>i.addEventListener("input",()=>{const v=parseFloat(i.value);if(!isNaN(v)){P[i.id]=v;draw()}}))}
+function pick(k){cur=k;P={...P0,...S[k]};build();draw();document.querySelectorAll("#sc button").forEach(b=>b.classList.toggle("on",b.textContent==k))}
+document.getElementById("sc").innerHTML=Object.keys(S).map(k=>`<button type="button">${k}</button>`).join("");
+document.querySelectorAll("#sc button").forEach(b=>b.addEventListener("click",()=>pick(b.textContent)));
+pick("Base");
+</script>
+</body>
+</html>
